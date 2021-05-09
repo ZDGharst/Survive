@@ -10,4 +10,5 @@ All assets used were obtained from the Unity Asset Store. The authors have autho
 
 - [Crosshairs Plus by AssetBag](https://assetstore.unity.com/packages/2d/gui/icons/crosshairs-plus-139902)
 - [Low-Poly Simple Nature Pack by JustCreate](https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-simple-nature-pack-162153)
+- [Rockets, Missiles & Bombs by AurynSky](https://assetstore.unity.com/packages/3d/props/weapons/rockets-missiles-bombs-cartoon-low-poly-pack-73141)
 - [Turrets Pack by Vertex Studio](https://assetstore.unity.com/packages/3d/props/weapons/turrets-pack-9872#description)
