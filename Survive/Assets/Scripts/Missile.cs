@@ -23,7 +23,7 @@ public class Missile : MonoBehaviour
 
     void Update()
     {
-        // Transform up, not forward, because of model axis
+        /* Transform up, not forward, because of model axis */
         rigidbody.velocity = transform.up * speed;
         transform.Rotate(new Vector3(0, speed, 0));
 

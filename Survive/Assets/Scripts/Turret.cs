@@ -27,7 +27,8 @@ public class Turret : MonoBehaviour
 
     void Update()
     {
-        // https://docs.unity3d.com/ScriptReference/Camera.ScreenToWorldPoint.html
+        /* Have the head of the turret look in the direction of the mouse
+         * https://docs.unity3d.com/ScriptReference/Camera.ScreenToWorldPoint.html */
         Vector3 input = Input.mousePosition;
         Vector3 mousePosition = camera.ScreenToWorldPoint(new Vector3(input.x, input.y, camera.transform.position.y));
         mousePosition.y = 0;
@@ -36,6 +37,7 @@ public class Turret : MonoBehaviour
         if(Input.GetMouseButton(0) && cooldown <= 0)
         {
             float barrelXPos = barrelXPosRight;
+            /* Alternate firing between left and right barrel. */
             if(leftBarrel)
             {
                 barrelXPos = barrelXPosLeft;
@@ -48,6 +50,7 @@ public class Turret : MonoBehaviour
             leftBarrel = !leftBarrel;
             cooldown = 0.5f;
 
+            /* Calculate position of projectile and instantiate it. */
             float headDirection = head.transform.rotation.eulerAngles.y + 90;
             Vector3 headPosition = head.transform.position;
             Vector3 barrel = head.transform.rotation * new Vector3(barrelXPos, barrelYPos, barrelZPos);
