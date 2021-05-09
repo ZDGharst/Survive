@@ -28,7 +28,8 @@ public class CameraControl : MonoBehaviour
         zoomInput = Input.GetAxis("Mouse ScrollWheel") * 7;
         normalizePanning = transform.position.y / 15;
 
-        /* This seems weird, but it's needed for the z portion of the movement translate to be prevented. */
+        /* This may seem weird, but it's needed for the z portion of the translate
+         * when zooming in/out to be prevented if already at max bounds. */
         if((transform.position.y == zoomInBound && zoomInput > 0) ||
            (transform.position.y == zoomOutBound && zoomInput < 0))
         {
@@ -40,10 +41,14 @@ public class CameraControl : MonoBehaviour
 
         if(Input.GetKeyDown("space"))
         {
-            transform.position = new Vector3(0, 15, -7);
+            ResetCamera();
         }
 
+        EnforceBounds();
+    }
 
+    void EnforceBounds()
+    {
         if(transform.position.x < -horizontalBounds)
         {
             transform.position = new Vector3(-horizontalBounds, transform.position.y, transform.position.z);
@@ -52,7 +57,6 @@ public class CameraControl : MonoBehaviour
         {
             transform.position = new Vector3(horizontalBounds, transform.position.y, transform.position.z);
         }
-
 
         if(transform.position.y < zoomInBound)
         {
@@ -63,7 +67,6 @@ public class CameraControl : MonoBehaviour
             transform.position = new Vector3(transform.position.x, zoomOutBound, transform.position.z);
         }
 
-
         if(transform.position.z < -verticalBounds)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, -verticalBounds);
@@ -72,5 +75,10 @@ public class CameraControl : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, verticalBounds);
         }
+    }
+
+    void ResetCamera()
+    {
+        transform.position = new Vector3(0, 15, -7);
     }
 }
