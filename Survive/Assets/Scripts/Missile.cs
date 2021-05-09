@@ -13,6 +13,8 @@ public class Missile : MonoBehaviour
     private int horizontalBounds = 100;
     private int verticalBounds = 120;
 
+    public ParticleSystem explosionParticle;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -23,7 +25,7 @@ public class Missile : MonoBehaviour
     {
         // Transform up, not forward, because of model axis
         rigidbody.velocity = transform.up * speed;
-        transform.Rotate(new Vector3(0, 1, 0) * speed);
+        transform.Rotate(new Vector3(0, speed, 0));
 
         if(transform.position.x < -horizontalBounds ||
            transform.position.x > horizontalBounds ||
@@ -41,10 +43,12 @@ public class Missile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
         if(!other.gameObject.CompareTag("Ground"))
         {
             Destroy(other.gameObject);
         }
+
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+        Destroy(gameObject);
     }
 }

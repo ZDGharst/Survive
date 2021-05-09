@@ -16,6 +16,8 @@ public class Turret : MonoBehaviour
     private float cooldown = 0.5f;
 
     public GameObject missilePrefab;
+    public ParticleSystem leftBarrelParticle;
+    public ParticleSystem rightBarrelParticle;
 
     void Start()
     {
@@ -37,7 +39,11 @@ public class Turret : MonoBehaviour
             if(leftBarrel)
             {
                 barrelXPos = barrelXPosLeft;
-
+                leftBarrelParticle.Play();
+            }
+            else
+            {
+                rightBarrelParticle.Play();
             }
             leftBarrel = !leftBarrel;
             cooldown = 0.5f;
