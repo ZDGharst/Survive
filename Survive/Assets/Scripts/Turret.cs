@@ -13,6 +13,8 @@ public class Turret : MonoBehaviour
     private float barrelYPos = 2.44f;
     private float barrelZPos = 1.60f;
 
+    private float cooldown = 0.5f;
+
     public GameObject missilePrefab;
 
     void Start()
@@ -29,7 +31,7 @@ public class Turret : MonoBehaviour
         mousePosition.y = 0;
         head.transform.LookAt(mousePosition + Vector3.up * head.transform.position.y);
 
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButton(0) && cooldown <= 0)
         {
             float barrelXPos = barrelXPosRight;
             if(leftBarrel)
@@ -38,6 +40,7 @@ public class Turret : MonoBehaviour
 
             }
             leftBarrel = !leftBarrel;
+            cooldown = 0.5f;
 
             float headDirection = head.transform.rotation.eulerAngles.y + 90;
             Vector3 headPosition = head.transform.position;
@@ -46,5 +49,7 @@ public class Turret : MonoBehaviour
 
             Instantiate(missilePrefab, barrel, missileRotation);
         }
+
+        cooldown -= Time.deltaTime;
     }
 }
