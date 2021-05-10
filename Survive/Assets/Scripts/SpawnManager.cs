@@ -6,26 +6,37 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject tombstone;
 
+    private int wave = 1;
     private int horizontalBounds = 60;
     private int verticalBounds = 80;
     private int safetyZone = 15;
+    private float waveTimer = 60.0f;
 
     void Start()
     {
-        GenerateTombstones(5);
+        GenerateTombstones();
     }
 
     void Update()
     {
+        waveTimer -= Time.deltaTime;
+
+        if(waveTimer <= 0)
+        {
+            GenerateTombstones();
+            waveTimer = 60.0f;
+        }
     }
 
-    void GenerateTombstones(int wave)
+    void GenerateTombstones()
     {
         int enemiesToSpawn = wave * wave / 4 + 1;
+        print("Generating wave #" + wave + " with + " + enemiesToSpawn + " enemies");
         for(int i = 0; i < enemiesToSpawn; i++)
         {
             Instantiate(tombstone, GenerateSpawnPosition(), tombstone.transform.rotation);
         }
+        wave++;
     }
 
     Vector3 GenerateSpawnPosition()
