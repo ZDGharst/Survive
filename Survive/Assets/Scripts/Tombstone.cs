@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class Tombstone : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject zombie;
+
     void Start()
     {
-        
+        StartCoroutine(SpawnZombie());
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    IEnumerator SpawnZombie()
+    {
+        while(true)
+        {
+            Instantiate(zombie, transform.position, zombie.transform.rotation);
+            yield return new WaitForSeconds(6);
+        }
+
     }
 }
