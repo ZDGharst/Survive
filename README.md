@@ -20,6 +20,13 @@ The background music for the menu and game are available under the [Creative Com
 - [Audobringer - Lonely Winter](https://freemusicarchive.org/music/Audiobinger/quarantine-beats-vol-1/lonely-winter)
 - [Crowander - Sneakers](https://freemusicarchive.org/music/crowander/from-the-garage-funkrock/sneakers)
 
+Sound effects were obtained under [CC0 1.0 Universal license](https://creativecommons.org/publicdomain/zero/1.0/).
+
+- [Explosion by qubodup](https://freesound.org/people/qubodup/sounds/182429/)
+- [Gunfire by PhreaKsAccount](https://freesound.org/people/PhreaKsAccount/sounds/46264/)
+- [Horror Sliding Transition by qubodup](https://freesound.org/people/qubodup/sounds/169727/)
+- [Zombie Growl by tonsil5](https://freesound.org/people/tonsil5/sounds/555414/)
+
 The font for the logo and main menu are licensed under the [Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL).
 
 - [Alatsi](https://fonts.google.com/specimen/Alatsi)
