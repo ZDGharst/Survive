@@ -47,10 +47,12 @@ public class Missile : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+
         else if(other.gameObject.CompareTag("Zombie"))
         {
             other.gameObject.GetComponent<Zombie>().health--;
         }
+        
         else if(other.gameObject.CompareTag("Tombstone"))
         {
             other.gameObject.GetComponent<Tombstone>().CreateZombie();

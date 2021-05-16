@@ -36,32 +36,36 @@ public class Turret : MonoBehaviour
         mousePosition.y = 0;
         head.transform.LookAt(mousePosition + Vector3.up * head.transform.position.y);
         
+        cooldown -= Time.deltaTime;
         if(Input.GetMouseButton(0) && cooldown <= 0)
         {
-            float barrelXPos = barrelXPosRight;
-            /* Alternate firing between left and right barrel. */
-            if(leftBarrel)
-            {
-                barrelXPos = barrelXPosLeft;
-                leftBarrelParticle.Play();
-            }
-            else
-            {
-                rightBarrelParticle.Play();
-            }
-            leftBarrel = !leftBarrel;
-            cooldown = 0.5f;
-
-            /* Calculate position of projectile and instantiate it. */
-            float headDirection = head.transform.rotation.eulerAngles.y + 90;
-            Vector3 headPosition = head.transform.position;
-            Vector3 barrel = head.transform.rotation * new Vector3(barrelXPos, barrelYPos, barrelZPos);
-            Quaternion missileRotation = Quaternion.Euler(0.0f, headDirection, 90.0f);
-
-            Instantiate(missilePrefab, barrel, missileRotation);
+            Attack();
         }
+    }
 
-        cooldown -= Time.deltaTime;
+    private void Attack()
+    {
+        float barrelXPos = barrelXPosRight;
+        /* Alternate firing between left and right barrel. */
+        if(leftBarrel)
+        {
+            barrelXPos = barrelXPosLeft;
+            leftBarrelParticle.Play();
+        }
+        else
+        {
+            rightBarrelParticle.Play();
+        }
+        leftBarrel = !leftBarrel;
+        cooldown = 0.5f;
+
+        /* Calculate position of projectile and instantiate it. */
+        float headDirection = head.transform.rotation.eulerAngles.y + 90;
+        Vector3 headPosition = head.transform.position;
+        Vector3 barrel = head.transform.rotation * new Vector3(barrelXPos, barrelYPos, barrelZPos);
+        Quaternion missileRotation = Quaternion.Euler(0.0f, headDirection, 90.0f);
+
+        Instantiate(missilePrefab, barrel, missileRotation);
     }
 
     public void TakeDamage(float damage)
@@ -69,6 +73,10 @@ public class Turret : MonoBehaviour
         health -= damage;
         if(health <= 0)
         {
+            PlayerPrefs.SetInt("GameOver", 1);
+            PlayerPrefs.SetInt("Time", 120);
+            PlayerPrefs.SetInt("TombstonesDestroyed", 4);
+            PlayerPrefs.SetInt("ZombiesKilled", 17);
             SceneManager.LoadScene("MainMenu");
         }
     }
