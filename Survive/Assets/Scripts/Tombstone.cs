@@ -5,23 +5,28 @@ using UnityEngine;
 public class Tombstone : MonoBehaviour
 {
     public GameObject zombie;
+    public int health = 5;
 
     void Start()
     {
-        StartCoroutine(SpawnZombie());
+        StartCoroutine(SpawnZombies());
     }
 
     void Update()
     {
     }
 
-    IEnumerator SpawnZombie()
+    public void CreateZombie()
+    {
+        Instantiate(zombie, transform.position, zombie.transform.rotation);
+    }
+
+    IEnumerator SpawnZombies()
     {
         while(true)
         {
-            Instantiate(zombie, transform.position, zombie.transform.rotation);
+            CreateZombie();
             yield return new WaitForSeconds(6);
         }
-
     }
 }

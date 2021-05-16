@@ -31,7 +31,6 @@ public class SpawnManager : MonoBehaviour
     void GenerateTombstones()
     {
         int enemiesToSpawn = wave * wave / 4 + 1;
-        print("Generating wave #" + wave + " with + " + enemiesToSpawn + " enemies");
         for(int i = 0; i < enemiesToSpawn; i++)
         {
             Instantiate(tombstone, GenerateSpawnPosition(), tombstone.transform.rotation);

@@ -43,9 +43,22 @@ public class Missile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!other.gameObject.CompareTag("Ground"))
+        if(other.gameObject.CompareTag("Environment"))
         {
             Destroy(other.gameObject);
+        }
+        else if(other.gameObject.CompareTag("Zombie"))
+        {
+            other.gameObject.GetComponent<Zombie>().health--;
+        }
+        else if(other.gameObject.CompareTag("Tombstone"))
+        {
+            other.gameObject.GetComponent<Tombstone>().CreateZombie();
+
+            if(--other.gameObject.GetComponent<Tombstone>().health <= 0)
+            {
+                Destroy(other.gameObject);
+            }
         }
 
         Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);

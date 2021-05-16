@@ -13,6 +13,7 @@ public class Turret : MonoBehaviour
     private float barrelYPos = 2.44f;
     private float barrelZPos = 1.60f;
 
+    public float health = 5.0f;
     private float cooldown = 0.5f;
 
     public GameObject missilePrefab;
@@ -33,7 +34,7 @@ public class Turret : MonoBehaviour
         Vector3 mousePosition = camera.ScreenToWorldPoint(new Vector3(input.x, input.y, camera.transform.position.y));
         mousePosition.y = 0;
         head.transform.LookAt(mousePosition + Vector3.up * head.transform.position.y);
-
+        
         if(Input.GetMouseButton(0) && cooldown <= 0)
         {
             float barrelXPos = barrelXPosRight;
