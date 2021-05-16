@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
-    public float speed = 4.0f;
     private GameObject player;
     private Vector3 direction;
     private Animator animator;
 
+    public float speed = 4.0f;
     public int health;
+    private float attackRate = 1.8f;
+    private float attackCooldown = 0.5f;
+    private float attackDamage = 1.0f;
 
     void Start()
     {
@@ -28,20 +31,11 @@ public class Zombie : MonoBehaviour
 
             if (direction.magnitude > 2.5f)
             {
-                transform.rotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
-                transform.position += direction.normalized * speed * Time.deltaTime;
-                animator.SetFloat("MoveSpeed", speed * 2.0f);
+                MoveTowardTurret();
             }
             else
             {
-                animator.SetFloat("MoveSpeed", 0.0f);
-                animator.SetTrigger("Attack");
-                player.GetComponent<Turret>().health -= Time.deltaTime;
-
-                if(player.GetComponent<Turret>().health < 0)
-                {
-                    print("Dead");
-                }
+                AttackTurret();
             }
         }
         else
@@ -57,5 +51,27 @@ public class Zombie : MonoBehaviour
         animator.SetTrigger("Dead");
         yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
+    }
+
+    void MoveTowardTurret()
+    {
+        transform.rotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
+        transform.position += direction.normalized * speed * Time.deltaTime;
+        animator.SetFloat("MoveSpeed", speed * 2.0f);
+    }
+
+    void AttackTurret()
+    {
+        animator.SetFloat("MoveSpeed", 0.0f);
+        animator.SetTrigger("Attack");
+        if(attackCooldown <= 0)
+        {
+            player.GetComponent<Turret>().TakeDamage(attackDamage);
+            attackCooldown = attackRate;
+        }
+        else
+        {
+            attackCooldown -= Time.deltaTime;
+        }
     }
 }
