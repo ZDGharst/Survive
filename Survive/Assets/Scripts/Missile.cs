@@ -52,7 +52,7 @@ public class Missile : MonoBehaviour
         {
             other.gameObject.GetComponent<Zombie>().health--;
         }
-        
+
         else if(other.gameObject.CompareTag("Tombstone"))
         {
             other.gameObject.GetComponent<Tombstone>().CreateZombie();
@@ -60,6 +60,7 @@ public class Missile : MonoBehaviour
             if(--other.gameObject.GetComponent<Tombstone>().health <= 0)
             {
                 Destroy(other.gameObject);
+                GameManager.tombstonesDestroyed++;
             }
         }
 

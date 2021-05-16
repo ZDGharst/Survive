@@ -7,6 +7,7 @@ public class Turret : MonoBehaviour
 {
     private Camera camera;
     private GameObject head;
+    public GameManager gameManager;
 
     private bool leftBarrel = true;
     private float barrelXPosLeft = -0.19f;
@@ -73,10 +74,7 @@ public class Turret : MonoBehaviour
         health -= damage;
         if(health <= 0)
         {
-            PlayerPrefs.SetInt("GameOver", 1);
-            PlayerPrefs.SetInt("Time", 120);
-            PlayerPrefs.SetInt("TombstonesDestroyed", 4);
-            PlayerPrefs.SetInt("ZombiesKilled", 17);
+            GameManager.gameOver = true;
             SceneManager.LoadScene("MainMenu");
         }
     }

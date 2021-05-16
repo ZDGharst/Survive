@@ -782,6 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931c7ae33d3580c89844c65e6de7b04f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 265357820}
   health: 5
   missilePrefab: {fileID: 2934954348028497015, guid: 1b95f6b83425b94d4bd0258dc1be0cc6,
     type: 3}
@@ -1186,7 +1187,7 @@ GameObject:
   - component: {fileID: 607922977}
   - component: {fileID: 607922976}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: BackgroundMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1206,7 +1207,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

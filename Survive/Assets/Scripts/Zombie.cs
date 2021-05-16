@@ -51,6 +51,7 @@ public class Zombie : MonoBehaviour
         animator.SetTrigger("Dead");
         yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
+        GameManager.zombiesKilled++;
     }
 
     void MoveTowardTurret()

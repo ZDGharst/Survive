@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -10,15 +11,23 @@ public class MainMenu : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject endgameMenu;
     public TextMeshProUGUI results;
+    public Slider effectsVolumeSlider;
+    public Slider musicVolumeSlider;
 
     void Start()
     {
-        if(PlayerPrefs.GetInt("GameOver") == 1)
+        effectsVolumeSlider.value = PlayerPrefs.GetFloat("EffectsVolume", 1.0f);
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
+
+        if(GameManager.gameOver)
         {
-            results.text = PlayerPrefs.GetInt("Time") + "\n" + PlayerPrefs.GetInt("TombstonesDestroyed") + "\n" + PlayerPrefs.GetInt("ZombiesKilled");
+            results.text = (int)GameManager.timeElapsed + "s\n" + GameManager.tombstonesDestroyed + "\n" + GameManager.zombiesKilled;
             GameOver();
-            PlayerPrefs.SetInt("GameOver", 0);
+
+            GameManager.ResetValues();
         }
+        
+        GameManager.UpdateMusicVolume();
     }
 
     void Update()
@@ -48,6 +57,17 @@ public class MainMenu : MonoBehaviour
     {
         homeMenu.SetActive(false);
         settingsMenu.SetActive(true);
+    }
+
+    public void MusicVolume()
+    {
+        PlayerPrefs.SetFloat("MusicVolume", musicVolumeSlider.value);
+        GameManager.UpdateMusicVolume();
+    }
+
+    public void EffectsVolume()
+    {
+        PlayerPrefs.SetFloat("EffectsVolume", effectsVolumeSlider.value);
     }
 
     public void ExitGame()
