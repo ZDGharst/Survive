@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Enemy
+  - Environment
+  - Tombstone
+  - Zombie
   layers:
   - Default
   - TransparentFX
