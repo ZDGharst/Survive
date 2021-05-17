@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Turret : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Turret : MonoBehaviour
     private GameObject head;
     public GameManager gameManager;
     private AudioSource attackSound;
+    public Image healthBar;
 
     private bool leftBarrel = true;
     private float barrelXPosLeft = -0.19f;
@@ -78,6 +80,10 @@ public class Turret : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+
+        healthBar.rectTransform.sizeDelta = new Vector2(health * 40.0f, 40.0f);
+        healthBar.transform.localPosition = new Vector3((health -5) * 20, 0.0f, 0.0f);
+
         if(health <= 0)
         {
             GameManager.gameOver = true;
