@@ -7,6 +7,7 @@ public class Zombie : MonoBehaviour
     private GameObject player;
     private Vector3 direction;
     private Animator animator;
+    private AudioSource attackSound;
 
     public float speed = 4.0f;
     public int health;
@@ -21,6 +22,8 @@ public class Zombie : MonoBehaviour
         speed -= health;
         animator = gameObject.GetComponent<Animator>();
         player = GameObject.Find("Turret");
+        attackSound = GetComponent<AudioSource>();
+        attackSound.volume = 0.75f * PlayerPrefs.GetFloat("EffectsVolume", 0.75f);
     }
 
     void Update()
@@ -69,6 +72,7 @@ public class Zombie : MonoBehaviour
         {
             player.GetComponent<Turret>().TakeDamage(attackDamage);
             attackCooldown = attackRate;
+            attackSound.Play();
         }
         else
         {

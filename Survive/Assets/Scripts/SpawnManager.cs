@@ -5,15 +5,18 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject tombstone;
+    private AudioSource waveSound;
 
     private int wave = 1;
     private int horizontalBounds = 60;
     private int verticalBounds = 80;
     private int safetyZone = 15;
-    private float waveTimer = 60.0f;
+    private float waveTimer = 30.0f;
 
     void Start()
     {
+        waveSound = GetComponent<AudioSource>();
+        waveSound.volume = PlayerPrefs.GetFloat("EffectsVolume", 0.75f);
         GenerateTombstones();
     }
 
@@ -30,11 +33,15 @@ public class SpawnManager : MonoBehaviour
 
     void GenerateTombstones()
     {
+        waveSound.Play();
+
         int enemiesToSpawn = wave * wave / 4 + 1;
+
         for(int i = 0; i < enemiesToSpawn; i++)
         {
             Instantiate(tombstone, GenerateSpawnPosition(), tombstone.transform.rotation);
         }
+
         wave++;
     }
 

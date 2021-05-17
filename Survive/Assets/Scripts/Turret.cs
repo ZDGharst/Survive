@@ -8,6 +8,7 @@ public class Turret : MonoBehaviour
     private Camera camera;
     private GameObject head;
     public GameManager gameManager;
+    private AudioSource attackSound;
 
     private bool leftBarrel = true;
     private float barrelXPosLeft = -0.19f;
@@ -26,6 +27,9 @@ public class Turret : MonoBehaviour
     {
         camera = Camera.main;
         head = GameObject.Find("Head");
+
+        attackSound = GetComponent<AudioSource>();
+        attackSound.volume = 0.75f * PlayerPrefs.GetFloat("EffectsVolume", 0.75f);
     }
 
     void Update()
@@ -46,6 +50,8 @@ public class Turret : MonoBehaviour
 
     private void Attack()
     {
+        attackSound.Play();
+
         float barrelXPos = barrelXPosRight;
         /* Alternate firing between left and right barrel. */
         if(leftBarrel)

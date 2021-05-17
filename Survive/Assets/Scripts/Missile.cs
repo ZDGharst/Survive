@@ -5,6 +5,7 @@ using UnityEngine;
 public class Missile : MonoBehaviour
 {
     private Rigidbody rigidbody;
+    public ParticleSystem explosionParticle;
 
     private float initialSpeed = 8.0f;
     private float maxSpeed = 40.0f;
@@ -13,7 +14,6 @@ public class Missile : MonoBehaviour
     private int horizontalBounds = 100;
     private int verticalBounds = 120;
 
-    public ParticleSystem explosionParticle;
 
     void Start()
     {
