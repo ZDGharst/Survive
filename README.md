@@ -4,7 +4,11 @@ This project is a personal project for the class COMP-SCI 490: Introduction to U
 
 ## Project Description
 
-I do not feel I am a very creative person, so I've used assets from many different sources (all assets used have their licenses examined before use in this project) and attempted to create a unique experience through programming fun gameplay mechanics. In this game, the goal is for the player's turret to survive for as long as possible against hordes of zombies. The turret will aim in the direction of the user's mouse, and the player may use WASD to pan the camera or the mouse wheel to zoom in/out. Every 30 minutes, tombstones spawn (the amount that spawn is exponential with time). Every 6 seconds, a zombie spawns from one of those tombstones. The player may click to spawn a missile in the direction of the turret head, and if that missile connects with an enemy zombie/tombstone, it will deal damage. The zombies, if left unchecked, will move toward the turret and kill it.
+I do not feel I am a very creative person, so I've used assets from many different sources (all assets used have their licenses examined before use in this project) and attempted to create a unique experience through programming fun gameplay mechanics.
+
+In this game, the goal is for the player's turret to survive for as long as possible against hordes of zombies. The turret will aim in the direction of the user's mouse, and the player may use WASD to pan the camera or the mouse wheel to zoom in/out. Every 30 minutes, tombstones spawn (the amount that spawn is exponential with time). Every 6 seconds, a zombie spawns from one of those tombstones.
+
+The player may click to spawn a missile in the direction of the turret head, and if that missile connects with an enemy zombie/tombstone, it will deal damage. The zombies, if left unchecked, will move toward the turret and kill it.
 
 ## Screenshots
 
