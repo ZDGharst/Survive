@@ -1,6 +1,6 @@
 # Survive
 
-This project is a personal project for the class COMP-SCI 490: Introduction to Unity at the University of Missouri-Kansas City. Playable through the web browser at: 
+This project is a personal project for the class COMP-SCI 490: Introduction to Unity at the University of Missouri-Kansas City.
 
 ## Project Description
 
@@ -11,10 +11,6 @@ In this game, the goal is for the player's turret to survive for as long as poss
 The player may click to spawn a missile in the direction of the turret head, and if that missile connects with an enemy zombie/tombstone, it will deal damage. The zombies, if left unchecked, will move toward the turret and kill it.
 
 ## Screenshots
-
-## Itch.io Link
-
-Playable on Itch.io: 
 
 ## Future Scope
 
