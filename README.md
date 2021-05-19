@@ -12,6 +12,11 @@ The player may click to spawn a missile in the direction of the turret head, and
 
 ## Screenshots
 
+![Main menu](Documents/StartMenu.gif)  
+![Gameplay](Documents/Gameplay.gif)  
+![Game over sequence](Documents/GameOver.gif)  
+
+
 ## Future Scope
 
 Software products are never complete. Some ideas that can further improve this game:
